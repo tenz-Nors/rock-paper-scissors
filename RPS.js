@@ -30,8 +30,30 @@ let score= JSON.parse(localStorage.getItem
  }
 }
 
+document.querySelector('.js-rock-button')
+  .addEventListener('click', ()=> {
+     playGame('ROCK');
+  });
 
- 
+document.querySelector('.js-scissors-button')
+  .addEventListener('click', ()=> {
+    playGame('SCISSORS');
+  });
+
+document.querySelector('.js-paper-button')
+  .addEventListener('click', () => {
+    playGame('PAPER');
+  });
+
+ document.body.addEventListener('keydown', (event) => {
+   if(event.key==='r') {
+    playGame('ROCK')
+   } else if (event.key === 'p') {
+    playGame('PAPER');
+   } else if (event.key === 's'){
+    playGame('SCISSORS')
+   }
+ })
 function playGame(playerMove) {
 const computerMove=pickComputerMove();
 
