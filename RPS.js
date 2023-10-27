@@ -9,13 +9,35 @@ let score= JSON.parse(localStorage.getItem
 };
 
  updateScoreElement();
+
+ let isAutoPlaying = false;
+ let intervalID;
+
+ //const autoPlay = () => {
+
+ //};
+
+ function autoPlay() {
+  if(!isAutoPlaying) {
+    intervalId = setInterval(()=> {
+      const playerMove = pickComputerMove()
+      playGame(playerMove);
+   }, 2000);
+  isAutoPlaying = true;
+ } else {
+     clearInterval(intervalId);
+     isAutoPlaying = false;
+ }
+}
+
+
  
 function playGame(playerMove) {
 const computerMove=pickComputerMove();
 
   let result = '';
 
-  if (playerMove === 'Scissors') {
+  if (playerMove === 'SCISSORS') {
 
   if (computerMove === 'ROCK') {
     result = 'YOU LOOSE!';
@@ -25,7 +47,7 @@ const computerMove=pickComputerMove();
   }
   } 
   
-  else if (playerMove === 'rock') {
+  else if (playerMove === 'ROCK') {
   if (computerMove === 'ROCK') {
   result = 'it is a TIE!';
   } else if (computerMove ==='SCISSORS') {result = 'YOU WIN!'}
@@ -34,7 +56,7 @@ const computerMove=pickComputerMove();
   }
   }
   
-  else if (playerMove === 'paper') {
+  else if (playerMove === 'PAPER') {
   if (computerMove === 'ROCK') {
   result = 'YOU WIN!';
   } else if (computerMove ==='SCISSORS') {result = 'YOU LOOSE!';}
@@ -51,7 +73,7 @@ const computerMove=pickComputerMove();
     score.losses += 1;
   }
 
-  else {
+  else if(result==='it is a TIE!'){
     score.ties += 1;
   }
 
@@ -68,13 +90,13 @@ const computerMove=pickComputerMove();
 <img class="move-icon" src="images/${playerMove}-emoji.png" alt="">
 vs
 <img class="move-icon" src="images/${computerMove}-emoji.png" alt="">
-COMPUTER`;
+NORSANG`;
   
   }
 
  function updateScoreElement() {
  document.querySelector('.js-score')
- .innerHTML = `wins: (${score.wins})  Losses: (${score.losses})  (Ties: ${score.ties})   Number of Games:(${score.total})`;
+ .innerHTML = `wins: (${score.wins})  Losses: (${score.losses})  Ties: (${score.ties})   Number of Games:(${score.total})`;
   }           
 
   let computerMove = '';

@@ -11,18 +11,18 @@
       <p class="title">Rock Paper Scirssors</p>
 
       <button class="move-button" onclick="
-          playGame('rock');
+          playGame('ROCK') 
           "> <img class="move-icon" src="images/rock-emoji.png" alt="">
       </button>
         
       <button class="move-button" onclick="
-          playGame('paper');
+          playGame('PAPER');
           "><img class="move-icon" src="images/paper-emoji.png" >
       </button>
 
 
       <button class="move-button" onclick="
-          playGame('Scissors');
+          playGame('SCISSORS');
           "><img class="move-icon" src="images/scissors-emoji.png" >
       </button>
 
@@ -40,6 +40,11 @@
           localStorage.removeItem(('score'));
           updateScoreElement();
           ">Reset Score
+      </button>
+
+      <button class="autoplay" onclick="
+            autoPlay()
+            ">Auto Play
       </button>
 
    <script src="RPS.js">
